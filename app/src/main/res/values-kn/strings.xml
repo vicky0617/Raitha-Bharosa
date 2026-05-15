@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">ರೈತ ಭರೋಸಾ ಹಬ್</string>
+    <string name="splash_subtitle">ಆಧುನಿಕ ರೈತರಿಗಾಗಿ ಸ್ಮಾರ್ಟ್ ಬಿತ್ತನೆ ಸಹಾಯಕ</string>
+    <string name="next">ಮುಂದೆ</string>
+    <string name="skip">ಬಿಟ್ಟುಬಿಡಿ</string>
+    <string name="get_started">ಪ್ರಾರಂಭಿಸಿ</string>
+    <string name="choose_language">ನಿಮ್ಮ ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ</string>
+    <string name="continue_btn">ಮುಂದುವರಿಸಿ</string>
+    <string name="registration_title">ರೈತರ ನೋಂದಣಿ</string>
+    <string name="full_name">ಪೂರ್ಣ ಹೆಸರು</string>
+    <string name="mobile_number">ಮೊಬೈಲ್ ಸಂಖ್ಯೆ</string>
+    <string name="village_town">ಗ್ರಾಮ / ಪಟ್ಟಣ</string>
+    <string name="district">ಜಿಲ್ಲೆ</string>
+    <string name="primary_crop">ಮುಖ್ಯ ಬೆಳೆ</string>
+    <string name="register_continue">ನೋಂದಾಯಿಸಿ ಮತ್ತು ಮುಂದುವರಿಸಿ</string>
+    <string name="location_title">ಸ್ಥಳ ಸೇವೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ</string>
+    <string name="location_desc">ನಿಮ್ಮ ಪ್ರದೇಶಕ್ಕೆ ನಿಖರವಾದ ಹವಾಮಾನ ನವೀಕರಣಗಳು ಮತ್ತು ಮಣ್ಣಿನ ವಿಶ್ಲೇಷಣೆಯನ್ನು ಒದಗಿಸಲು ನಮಗೆ ನಿಮ್ಮ ಸ್ಥಳದ ಅವಶ್ಯಕತೆಯಿದೆ.</string>
+    <string name="allow_location">ಸ್ಥಳ ಪ್ರವೇಶವನ್ನು ಅನುಮತಿಸಿ</string>
+    <string name="not_now">ಈಗ ಬೇಡ</string>
+    <string name="home">ಮನೆ</string>
+    <string name="weather">ಹವಾಮಾನ</string>
+    <string name="calendar">ಕ್ಯಾಲೆಂಡರ್</string>
+    <string name="history">ಇತಿಹಾಸ</string>
+    <string name="more">ಇನ್ನಷ್ಟು</string>
+    <string name="sowing_index">ಬಿತ್ತನೆ ಸೂಚ್ಯಂಕ</string>
+    <string name="soil_monitoring">ಮಣ್ಣಿನ ಮೇಲ್ವಿಚಾರಣೆ</string>
+    <string name="recommendation">ಶಿಫಾರಸು</string>
+</resources>
