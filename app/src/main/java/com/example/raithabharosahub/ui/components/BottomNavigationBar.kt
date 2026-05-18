@@ -67,14 +67,12 @@ fun BottomNavigationBar(navController: NavHostController) {
                     },
                     selected = isSelected,
                     onClick = {
-                        if (currentRoute != item.route) {
-                            navController.navigate(item.route) {
-                                popUpTo(Screen.Dashboard.route) {
-                                    saveState = true
-                                }
-                                launchSingleTop = true
-                                restoreState = true
-                            }
+                        navController.navigate(item.route) {
+                            // popUpTo(navController.graph.findStartDestination().id) {
+                            //     saveState = true
+                            // }
+                            launchSingleTop = true
+                            restoreState = true
                         }
                     },
                     colors = NavigationBarItemDefaults.colors(

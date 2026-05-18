@@ -22,7 +22,21 @@
     <string name="calendar">Calendar</string>
     <string name="history">History</string>
     <string name="more">More</string>
-    <string name="sowing_index">Sowing Index</string>
-    <string name="soil_monitoring">Soil Monitoring</string>
-    <string name="recommendation">Recommendation</string>
+    <string name="onboarding1_title">Smart Farming\nStarts Here</string>
+    <string name="onboarding1_kn_title">ಸ್ಮಾರ್ಟ್ ಕೃಷಿ ಇಲ್ಲಿ ಪ್ರಾರಂಭವಾಗುತ್ತದೆ</string>
+    <string name="feature_weather">Real-time Weather Updates</string>
+    <string name="feature_soil">Soil Health Monitoring</string>
+    <string name="feature_sowing">Sowing Recommendations</string>
+    <string name="feature_assistant">AI Farming Assistant</string>
+    <string name="onboarding2_title">Make Better Decisions\nWith Real Data</string>
+    <string name="onboarding2_kn_subtitle">ನಿಜವಾದ ಡೇಟಾ ಮೂಲಕ ಉತ್ತಮ ನಿರ್ಧಾರಗಳನ್ನು ತೆಗೆದುಕೊಳ್ಳಿ</string>
+    <string name="feature_increase_yield">Increase Yield</string>
+    <string name="feature_save_resources">Save Resources</string>
+    <string name="feature_reduce_risks">Reduce Risks</string>
+    <string name="english">English</string>
+    <string name="kannada">Kannada</string>
+    <string name="kannada_native">ಕನ್ನಡ</string>
+    <string name="english_native">ಇಂಗ್ಲಿಷ್</string>
+    <string name="village_town_label">Village / Town</string>
+    <string name="select_primary_crop">Select Primary Crop</string>
 </resources>

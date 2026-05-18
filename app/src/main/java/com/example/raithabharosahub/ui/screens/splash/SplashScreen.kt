@@ -23,6 +23,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.compose.ui.res.stringResource
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Eco
+import androidx.compose.material3.Icon
+import androidx.compose.ui.graphics.Brush
 import com.example.raithabharosahub.R
 import com.example.raithabharosahub.ui.navigation.Screen
 import kotlinx.coroutines.delay
@@ -59,18 +64,9 @@ fun SplashScreen(navController: NavHostController, viewModel: SplashViewModel = 
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary),
+            .background(MaterialTheme.colorScheme.background),
         contentAlignment = Alignment.Center
     ) {
-        // Background Image (Placeholder)
-        // Image(
-        //     painter = painterResource(id = R.drawable.agri_bg),
-        //     contentDescription = null,
-        //     modifier = Modifier.fillMaxSize(),
-        //     contentScale = ContentScale.Crop,
-        //     alpha = 0.3f
-        // )
-
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
@@ -78,18 +74,17 @@ fun SplashScreen(navController: NavHostController, viewModel: SplashViewModel = 
         ) {
             // App Logo
             Surface(
-                modifier = Modifier
-                    .size(140.dp),
-                shape = MaterialTheme.shapes.extraLarge,
+                modifier = Modifier.size(140.dp),
+                shape = CircleShape,
                 color = Color.White,
                 shadowElevation = 8.dp
             ) {
                 Box(contentAlignment = Alignment.Center) {
-                    Text(
-                        text = "RBH",
-                        fontSize = 48.sp,
-                        fontWeight = FontWeight.ExtraBold,
-                        color = MaterialTheme.colorScheme.primary
+                    Icon(
+                        imageVector = Icons.Default.Eco,
+                        contentDescription = null,
+                        modifier = Modifier.size(80.dp),
+                        tint = Color(0xFF1B5E20)
                     )
                 }
             }
@@ -98,22 +93,35 @@ fun SplashScreen(navController: NavHostController, viewModel: SplashViewModel = 
 
             Text(
                 text = stringResource(id = R.string.app_name),
-                color = Color.White,
-                fontSize = 36.sp,
-                fontWeight = FontWeight.Bold,
-                letterSpacing = 1.sp
+                color = Color(0xFF1B5E20),
+                fontSize = 40.sp,
+                fontWeight = FontWeight.ExtraBold,
+                textAlign = TextAlign.Center
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = stringResource(id = R.string.splash_subtitle),
-                color = Color.White.copy(alpha = 0.9f),
+                color = Color.Gray,
                 fontSize = 18.sp,
                 fontWeight = FontWeight.Medium,
                 textAlign = TextAlign.Center,
-                modifier = Modifier.padding(horizontal = 40.dp)
+                modifier = Modifier.padding(horizontal = 32.dp)
             )
         }
+        
+        // Farmer Illustration feel at bottom
+        Box(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .fillMaxWidth()
+                .height(300.dp)
+                .background(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(Color.Transparent, Color(0xFFE8F5E9).copy(alpha = 0.5f))
+                    )
+                )
+        )
     }
 }

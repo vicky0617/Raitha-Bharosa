@@ -21,6 +21,15 @@ import kotlinx.coroutines.launch
 
 import com.example.raithabharosahub.utils.LocaleHelper
 
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Eco
+import androidx.compose.material.icons.filled.Forest
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.stringResource
+import com.example.raithabharosahub.R
+
 @Composable
 fun LanguageSelectionScreen(navController: NavHostController) {
     val context = LocalContext.current
@@ -37,10 +46,10 @@ fun LanguageSelectionScreen(navController: NavHostController) {
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = "Choose Your Language",
+            text = stringResource(id = R.string.choose_language),
             fontSize = 32.sp,
             fontWeight = FontWeight.ExtraBold,
-            color = MaterialTheme.colorScheme.primary,
+            color = Color(0xFF1B5E20),
             textAlign = TextAlign.Center
         )
 
@@ -57,7 +66,9 @@ fun LanguageSelectionScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(56.dp))
 
         LanguageCard(
-            title = "English",
+            title = stringResource(id = R.string.english),
+            nativeTitle = stringResource(id = R.string.english_native),
+            icon = Icons.Default.Forest,
             isSelected = selectedLanguage == "en",
             onClick = { selectedLanguage = "en" }
         )
@@ -65,7 +76,9 @@ fun LanguageSelectionScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(20.dp))
 
         LanguageCard(
-            title = "ಕನ್ನಡ (Kannada)",
+            title = stringResource(id = R.string.kannada),
+            nativeTitle = stringResource(id = R.string.kannada_native),
+            icon = Icons.Default.Eco,
             isSelected = selectedLanguage == "kn",
             onClick = { selectedLanguage = "kn" }
         )
@@ -84,43 +97,73 @@ fun LanguageSelectionScreen(navController: NavHostController) {
                 .fillMaxWidth()
                 .height(64.dp),
             shape = MaterialTheme.shapes.large,
+            colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1B5E20)),
             elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
         ) {
-            Text("Continue", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text(stringResource(id = R.string.continue_btn), fontSize = 18.sp, fontWeight = FontWeight.Bold)
         }
     }
 }
 
 @Composable
-fun LanguageCard(title: String, isSelected: Boolean, onClick: () -> Unit) {
+fun LanguageCard(
+    title: String,
+    nativeTitle: String,
+    icon: ImageVector,
+    isSelected: Boolean,
+    onClick: () -> Unit
+) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .height(90.dp)
+            .height(100.dp)
             .clickable { onClick() },
         shape = MaterialTheme.shapes.extraLarge,
         colors = CardDefaults.cardColors(
-            containerColor = if (isSelected) MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f) else MaterialTheme.colorScheme.surface
+            containerColor = Color.White
         ),
-        border = if (isSelected) BorderStroke(3.dp, MaterialTheme.colorScheme.primary) else BorderStroke(1.dp, Color.LightGray.copy(alpha = 0.5f)),
-        elevation = CardDefaults.cardElevation(defaultElevation = if (isSelected) 4.dp else 0.dp)
+        border = if (isSelected) BorderStroke(3.dp, Color(0xFF1B5E20)) else BorderStroke(1.dp, Color.LightGray.copy(alpha = 0.5f)),
+        elevation = CardDefaults.cardElevation(defaultElevation = if (isSelected) 4.dp else 1.dp)
     ) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.CenterStart
         ) {
             Row(
-                modifier = Modifier.padding(horizontal = 24.dp),
+                modifier = Modifier.padding(horizontal = 24.dp).fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                RadioButton(selected = isSelected, onClick = null)
-                Spacer(modifier = Modifier.width(16.dp))
-                Text(
-                    text = title,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold,
-                    color = if (isSelected) MaterialTheme.colorScheme.primary else Color.Black
-                )
+                Surface(
+                    modifier = Modifier.size(56.dp),
+                    shape = CircleShape,
+                    color = Color(0xFFE8F5E9)
+                ) {
+                    Box(contentAlignment = Alignment.Center) {
+                        Icon(imageVector = icon, contentDescription = null, tint = Color(0xFF1B5E20), modifier = Modifier.size(32.dp))
+                    }
+                }
+                Spacer(modifier = Modifier.width(20.dp))
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        text = title,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Black
+                    )
+                    Text(
+                        text = nativeTitle,
+                        fontSize = 16.sp,
+                        color = Color.Gray
+                    )
+                }
+                if (isSelected) {
+                    Icon(
+                        imageVector = Icons.Default.CheckCircle,
+                        contentDescription = null,
+                        tint = Color(0xFF1B5E20),
+                        modifier = Modifier.size(28.dp)
+                    )
+                }
             }
         }
     }

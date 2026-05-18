@@ -4,13 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.raithabharosahub.data.KrishiActivity
+import com.example.raithabharosahub.data.ActivityDao
 import com.example.raithabharosahub.data.model.CropHistory
 import com.example.raithabharosahub.data.model.FarmerProfile
 
-@Database(entities = [FarmerProfile::class, CropHistory::class], version = 2, exportSchema = false)
+@Database(entities = [FarmerProfile::class, CropHistory::class, KrishiActivity::class], version = 3, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun farmerDao(): FarmerDao
     abstract fun cropDao(): CropDao
+    abstract fun activityDao(): ActivityDao
 
     companion object {
         @Volatile

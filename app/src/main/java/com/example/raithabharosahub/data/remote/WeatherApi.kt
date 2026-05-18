@@ -1,5 +1,6 @@
 package com.example.raithabharosahub.data.remote
 
+import com.google.gson.annotations.SerializedName
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -39,7 +40,7 @@ data class WindData(
 )
 
 data class RainData(
-    @com.squareup.moshi.Json(name = "1h") val oneHour: Double?
+    @SerializedName("1h") val oneHour: Double?
 )
 
 data class WeatherDescription(

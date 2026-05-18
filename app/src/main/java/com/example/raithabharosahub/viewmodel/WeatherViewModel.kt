@@ -2,7 +2,7 @@ package com.example.raithabharosahub.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.raithabharosahub.data.remote.RetrofitInstance
+import com.example.raithabharosahub.data.remote.RetrofitClient
 import com.example.raithabharosahub.data.remote.WeatherResponse
 import com.example.raithabharosahub.data.repository.WeatherRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class WeatherViewModel : ViewModel() {
-    private val repository = WeatherRepository(RetrofitInstance.api)
+    private val repository = WeatherRepository(RetrofitClient.weatherApi)
 
     private val _weatherState = MutableStateFlow<WeatherState>(WeatherState.Loading)
     val weatherState: StateFlow<WeatherState> = _weatherState

@@ -2,21 +2,24 @@ package com.example.raithabharosahub.ui.screens.onboarding
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Agriculture
-import androidx.compose.material.icons.filled.CheckCircle
-import androidx.compose.material.icons.filled.SmartToy
+import androidx.compose.material.icons.filled.ChevronRight
+import androidx.compose.material.icons.filled.TipsAndUpdates
+import androidx.compose.material.icons.filled.WbSunny
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
-import androidx.compose.ui.res.stringResource
 import com.example.raithabharosahub.R
 import com.example.raithabharosahub.ui.navigation.Screen
 
@@ -25,6 +28,7 @@ fun Onboarding1Screen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
@@ -34,64 +38,73 @@ fun Onboarding1Screen(navController: NavHostController) {
             horizontalArrangement = Arrangement.End
         ) {
             TextButton(onClick = { navController.navigate(Screen.LanguageSelection.route) }) {
-                Text(stringResource(id = R.string.skip))
+                Text(stringResource(id = R.string.skip), color = Color.Gray)
             }
         }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = stringResource(id = R.string.onboarding1_title),
+                fontSize = 32.sp,
+                lineHeight = 40.sp,
+                fontWeight = FontWeight.ExtraBold,
+                textAlign = TextAlign.Center,
+                color = Color(0xFF1B5E20)
+            )
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            Text(
+                text = stringResource(id = R.string.onboarding1_kn_title),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                color = Color(0xFF4CAF50)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
             // Illustration Card
             Card(
-                modifier = Modifier
-                    .size(280.dp),
+                modifier = Modifier.size(300.dp),
                 shape = MaterialTheme.shapes.extraLarge,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.primaryContainer),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
             ) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Default.Agriculture,
                         contentDescription = null,
-                        modifier = Modifier.size(120.dp),
-                        tint = MaterialTheme.colorScheme.primary
+                        modifier = Modifier.size(150.dp),
+                        tint = Color(0xFF4CAF50)
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(40.dp))
-
-            Text(
-                text = "Modern Farming Assistant",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.ExtraBold,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.primary
-            )
-
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
             val features = listOf(
-                "Real-time weather updates",
-                "Soil monitoring",
-                "Sowing recommendations",
-                "AI farming assistant"
+                R.string.feature_weather,
+                R.string.feature_soil,
+                R.string.feature_sowing,
+                R.string.feature_assistant
             )
 
             Column(horizontalAlignment = Alignment.Start) {
-                features.forEach { feature ->
+                features.forEach { resId ->
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         modifier = Modifier.padding(vertical = 6.dp)
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.CheckCircle,
-                            contentDescription = null,
-                            tint = MaterialTheme.colorScheme.secondary,
-                            modifier = Modifier.size(20.dp)
-                        )
-                        Spacer(modifier = Modifier.width(12.dp))
+                        // Diamond Bullet
+                        Surface(
+                            modifier = Modifier.size(8.dp).rotate(45f),
+                            color = Color(0xFFFFC107)
+                        ) {}
+                        Spacer(modifier = Modifier.width(16.dp))
                         Text(
-                            text = feature,
-                            fontSize = 17.sp,
+                            text = stringResource(id = resId),
+                            fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
                             color = Color.DarkGray
                         )
@@ -100,21 +113,25 @@ fun Onboarding1Screen(navController: NavHostController) {
             }
         }
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Row(horizontalArrangement = Arrangement.Center) {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row {
                 // Pagination Dots
-                Box(modifier = Modifier.size(10.dp).background(MaterialTheme.colorScheme.primary, MaterialTheme.shapes.extraLarge))
+                Box(modifier = Modifier.size(12.dp).background(Color(0xFF1B5E20), CircleShape))
                 Spacer(modifier = Modifier.width(8.dp))
-                Box(modifier = Modifier.size(10.dp).background(Color.LightGray, MaterialTheme.shapes.extraLarge))
+                Box(modifier = Modifier.size(12.dp).background(Color.LightGray, CircleShape))
             }
 
-            Spacer(modifier = Modifier.height(24.dp))
-
-            Button(
+            FloatingActionButton(
                 onClick = { navController.navigate(Screen.Onboarding2.route) },
-                modifier = Modifier.fillMaxWidth().height(56.dp)
+                containerColor = Color(0xFF1B5E20),
+                contentColor = Color.White,
+                shape = CircleShape
             ) {
-                Text(stringResource(id = R.string.next))
+                Icon(Icons.Default.ChevronRight, contentDescription = "Next")
             }
         }
     }
@@ -125,6 +142,7 @@ fun Onboarding2Screen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween
@@ -134,66 +152,110 @@ fun Onboarding2Screen(navController: NavHostController) {
             horizontalArrangement = Arrangement.End
         ) {
             TextButton(onClick = { navController.navigate(Screen.LanguageSelection.route) }) {
-                Text(stringResource(id = R.string.skip))
+                Text(stringResource(id = R.string.skip), color = Color.Gray)
             }
         }
 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(
+                text = stringResource(id = R.string.onboarding2_title),
+                fontSize = 32.sp,
+                lineHeight = 40.sp,
+                fontWeight = FontWeight.ExtraBold,
+                textAlign = TextAlign.Center,
+                color = Color(0xFF1B5E20)
+            )
+            
+            Spacer(modifier = Modifier.height(8.dp))
+            
+            Text(
+                text = stringResource(id = R.string.onboarding2_kn_subtitle),
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                color = Color(0xFF4CAF50)
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
+
             // Illustration Card
             Card(
-                modifier = Modifier
-                    .size(280.dp),
+                modifier = Modifier.size(300.dp),
                 shape = MaterialTheme.shapes.extraLarge,
-                colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
+                colors = CardDefaults.cardColors(containerColor = Color.White),
                 elevation = CardDefaults.cardElevation(defaultElevation = 0.dp)
             ) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Icon(
-                        imageVector = Icons.Default.SmartToy,
+                        imageVector = Icons.Default.Agriculture,
                         contentDescription = null,
-                        modifier = Modifier.size(120.dp),
-                        tint = MaterialTheme.colorScheme.secondary
+                        modifier = Modifier.size(180.dp),
+                        tint = Color(0xFF4CAF50)
                     )
+                    // Sun icon overlay feel
+                    Box(modifier = Modifier.fillMaxSize().padding(24.dp), contentAlignment = Alignment.TopStart) {
+                        Surface(
+                            modifier = Modifier.size(60.dp),
+                            shape = CircleShape,
+                            color = Color(0xFFFFF9C4),
+                            shadowElevation = 2.dp
+                        ) {
+                            Box(contentAlignment = Alignment.Center) {
+                                Icon(Icons.Default.WbSunny, contentDescription = null, tint = Color(0xFFFFC107), modifier = Modifier.size(32.dp))
+                            }
+                        }
+                    }
                 }
             }
 
-            Spacer(modifier = Modifier.height(40.dp))
+            Spacer(modifier = Modifier.height(32.dp))
 
-            Text(
-                text = "Empowering Farmers",
-                fontSize = 28.sp,
-                fontWeight = FontWeight.ExtraBold,
-                textAlign = TextAlign.Center,
-                color = MaterialTheme.colorScheme.secondary
+            val features = listOf(
+                R.string.feature_increase_yield,
+                R.string.feature_save_resources,
+                R.string.feature_reduce_risks
             )
 
-            Spacer(modifier = Modifier.height(20.dp))
-
-            Text(
-                text = "Make better decisions, optimize resources and get valuable farming insights with our AI assistant.",
-                fontSize = 18.sp,
-                lineHeight = 26.sp,
-                textAlign = TextAlign.Center,
-                color = Color.DarkGray,
-                modifier = Modifier.padding(horizontal = 16.dp)
-            )
+            Column(horizontalAlignment = Alignment.Start) {
+                features.forEach { resId ->
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(vertical = 6.dp)
+                    ) {
+                        Surface(
+                            modifier = Modifier.size(8.dp).rotate(45f),
+                            color = Color(0xFFFFC107)
+                        ) {}
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Text(
+                            text = stringResource(id = resId),
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Medium,
+                            color = Color.DarkGray
+                        )
+                    }
+                }
+            }
         }
 
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Row(horizontalArrangement = Arrangement.Center) {
-                // Pagination Dots
-                Box(modifier = Modifier.size(10.dp).background(Color.LightGray, MaterialTheme.shapes.extraLarge))
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Row {
+                Box(modifier = Modifier.size(12.dp).background(Color.LightGray, CircleShape))
                 Spacer(modifier = Modifier.width(8.dp))
-                Box(modifier = Modifier.size(10.dp).background(MaterialTheme.colorScheme.primary, MaterialTheme.shapes.extraLarge))
+                Box(modifier = Modifier.size(12.dp).background(Color(0xFF1B5E20), CircleShape))
             }
-
-            Spacer(modifier = Modifier.height(24.dp))
 
             Button(
                 onClick = { navController.navigate(Screen.LanguageSelection.route) },
-                modifier = Modifier.fillMaxWidth().height(56.dp)
+                modifier = Modifier.height(56.dp).width(160.dp),
+                shape = MaterialTheme.shapes.large,
+                colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1B5E20))
             ) {
-                Text("Get Started")
+                Text(stringResource(id = R.string.get_started), fontWeight = FontWeight.Bold)
             }
         }
     }

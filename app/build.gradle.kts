@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.coil.compose)
     implementation(libs.converter.moshi)
+    implementation(libs.gson)
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.serialization.core)
@@ -78,7 +79,11 @@ dependencies {
     implementation(libs.moshi.kotlin)
     implementation(libs.okhttp)
     implementation(libs.play.services.location)
-    implementation(libs.retrofit)
+    // Retrofit core library
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    
+    // THE MISSING LINK: Gson Converter Factory
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     testImplementation(libs.androidx.core)
     testImplementation(libs.androidx.junit)
     testImplementation(libs.junit)

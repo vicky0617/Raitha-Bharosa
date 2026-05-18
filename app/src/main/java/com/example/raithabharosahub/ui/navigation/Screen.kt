@@ -12,10 +12,9 @@ sealed class Screen(val route: String) {
     object Calendar : Screen("calendar")
     object SoilMonitoring : Screen("soil_monitoring")
     object CropHistory : Screen("crop_history")
-    object AiAssistant : Screen("ai_assistant")
     object Notifications : Screen("notifications")
     object Settings : Screen("settings")
     object Map : Screen("map")
-    object VoiceCommand : Screen("voice_command")
-    object MicrophoneAccess : Screen("microphone_access")
+    object ActionPlan : Screen("action_plan_route")
+    object Profile : Screen("profile_route")
 }

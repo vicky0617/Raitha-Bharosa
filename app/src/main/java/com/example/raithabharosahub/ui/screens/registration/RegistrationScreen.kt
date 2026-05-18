@@ -6,7 +6,14 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Map
+import androidx.compose.material.icons.filled.Agriculture
+import androidx.compose.ui.res.stringResource
+import com.example.raithabharosahub.R
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.material3.*
@@ -24,6 +31,7 @@ import com.example.raithabharosahub.ui.navigation.Screen
 import com.example.raithabharosahub.viewmodel.RegistrationViewModel
 import com.example.raithabharosahub.viewmodel.RegistrationState
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegistrationScreen(navController: NavHostController, viewModel: RegistrationViewModel = viewModel()) {
     var fullName by remember { mutableStateOf("") }
@@ -43,7 +51,18 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
     }
 
     Scaffold(
-        containerColor = MaterialTheme.colorScheme.background
+        containerColor = MaterialTheme.colorScheme.background,
+        topBar = {
+            TopAppBar(
+                title = { Text("Farmer Registration", fontWeight = FontWeight.Bold) },
+                navigationIcon = {
+                    IconButton(onClick = { navController.popBackStack() }) {
+                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent)
+            )
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -53,52 +72,18 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
                 .verticalScroll(rememberScrollState()),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(
-                text = "Farmer Registration",
-                fontSize = 32.sp,
-                fontWeight = FontWeight.ExtraBold,
-                color = MaterialTheme.colorScheme.primary,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(8.dp))
-
-            Text(
-                text = "Please enter your details to get started",
-                fontSize = 16.sp,
-                color = Color.Gray,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(40.dp))
-
-            if (registrationState is RegistrationState.Error) {
-                Card(
-                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.errorContainer),
-                    modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp)
-                ) {
-                    Text(
-                        text = (registrationState as RegistrationState.Error).message,
-                        color = MaterialTheme.colorScheme.error,
-                        modifier = Modifier.padding(16.dp),
-                        textAlign = TextAlign.Center
-                    )
-                }
-            }
-
             // Profile Avatar
             Surface(
-                modifier = Modifier.size(120.dp),
+                modifier = Modifier.size(130.dp),
                 shape = CircleShape,
-                color = MaterialTheme.colorScheme.primaryContainer,
-                shadowElevation = 4.dp
+                color = Color(0xFFE8F5E9)
             ) {
                 Box(contentAlignment = Alignment.Center) {
                     Icon(
                         imageVector = Icons.Default.Person,
                         contentDescription = null,
-                        modifier = Modifier.size(60.dp),
-                        tint = MaterialTheme.colorScheme.primary
+                        modifier = Modifier.size(80.dp),
+                        tint = Color(0xFF1B5E20)
                     )
                 }
             }
@@ -108,7 +93,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             ModernTextField(
                 value = fullName,
                 onValueChange = { fullName = it; viewModel.clearError() },
-                label = "Full Name",
+                label = stringResource(id = R.string.full_name),
                 icon = Icons.Default.Person,
                 enabled = registrationState !is RegistrationState.Loading
             )
@@ -118,7 +103,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             ModernTextField(
                 value = mobileNumber,
                 onValueChange = { mobileNumber = it; viewModel.clearError() },
-                label = "Mobile Number",
+                label = stringResource(id = R.string.mobile_number),
                 icon = Icons.Default.Phone,
                 enabled = registrationState !is RegistrationState.Loading
             )
@@ -128,8 +113,8 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             ModernTextField(
                 value = village,
                 onValueChange = { village = it; viewModel.clearError() },
-                label = "Village / Town",
-                icon = Icons.Default.HomeWork,
+                label = stringResource(id = R.string.village_town_label),
+                icon = Icons.Default.LocationOn,
                 enabled = registrationState !is RegistrationState.Loading
             )
 
@@ -138,8 +123,8 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             ModernTextField(
                 value = district,
                 onValueChange = { district = it; viewModel.clearError() },
-                label = "District",
-                icon = Icons.Default.LocationCity,
+                label = stringResource(id = R.string.district),
+                icon = Icons.Default.Map,
                 enabled = registrationState !is RegistrationState.Loading
             )
 
@@ -148,7 +133,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             ModernTextField(
                 value = primaryCrop,
                 onValueChange = { primaryCrop = it; viewModel.clearError() },
-                label = "Primary Crop",
+                label = stringResource(id = R.string.select_primary_crop),
                 icon = Icons.Default.Agriculture,
                 enabled = registrationState !is RegistrationState.Loading
             )
@@ -156,7 +141,7 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
             Spacer(modifier = Modifier.height(56.dp))
 
             if (registrationState is RegistrationState.Loading) {
-                CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
+                CircularProgressIndicator(color = Color(0xFF1B5E20))
             } else {
                 Button(
                     onClick = {
@@ -166,9 +151,10 @@ fun RegistrationScreen(navController: NavHostController, viewModel: Registration
                         .fillMaxWidth()
                         .height(64.dp),
                     shape = MaterialTheme.shapes.large,
+                    colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF1B5E20)),
                     elevation = ButtonDefaults.buttonElevation(defaultElevation = 4.dp)
                 ) {
-                    Text("Register & Continue", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                    Text(stringResource(id = R.string.register_continue), fontSize = 18.sp, fontWeight = FontWeight.Bold)
                 }
             }
         }
@@ -187,12 +173,12 @@ fun ModernTextField(
         value = value,
         onValueChange = onValueChange,
         label = { Text(label) },
-        leadingIcon = { Icon(icon, contentDescription = null, tint = MaterialTheme.colorScheme.primary) },
+        leadingIcon = { Icon(icon, contentDescription = null, tint = Color.Gray) },
         modifier = Modifier.fillMaxWidth(),
-        shape = MaterialTheme.shapes.medium,
+        shape = MaterialTheme.shapes.large,
         enabled = enabled,
         colors = OutlinedTextFieldDefaults.colors(
-            focusedBorderColor = MaterialTheme.colorScheme.primary,
+            focusedBorderColor = Color(0xFF1B5E20),
             unfocusedBorderColor = Color.LightGray.copy(alpha = 0.5f),
             focusedContainerColor = Color.White,
             unfocusedContainerColor = Color.White
