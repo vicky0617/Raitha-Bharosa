@@ -62,8 +62,10 @@ com.example.raithabharosahub/
 ## 📸 Screenshots
 
 | Splash Screen | Onboarding | Dashboard |
-| :---: | :---: | :---: |
-| ![Splash]("https://github.com/user-attachments/assets/3615d832-1e1a-4c57-9b3a-0c780936c6c6") | ![Onboarding]("https://github.com/user-attachments/assets/b3ce360e-76ec-4302-9e37-be20aebca997") | ![Dashboard]("https://github.com/user-attachments/assets/52387831-131e-4251-85a6-31d0d5fafc49") |
+<img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/f4dfbcf1-4881-4229-a3e1-70986827c33a" />
+<img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/a78bed74-3e31-4005-b77a-c373e4d148d6" />
+<img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/2dc2a1be-2efe-4a1b-9a2a-58b4e083270e" />
+
 
 ## 📄 License
 
