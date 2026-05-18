@@ -63,10 +63,7 @@ com.example.raithabharosahub/
 
 | Splash Screen | Onboarding | Dashboard |
 | :---: | :---: | :---: |
-| ![Splash](<img width="150" height="300" alt="WhatsApp Image 2026-05-18 at 4 37 15 PM" src="https://github.com/user-attachments/assets/3615d832-1e1a-4c57-9b3a-0c780936c6c6" />
-) | ![Onboarding](<img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/b3ce360e-76ec-4302-9e37-be20aebca997" />
-) | ![Dashboard](<img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/52387831-131e-4251-85a6-31d0d5fafc49" />
-) |
+| ![Splash]("https://github.com/user-attachments/assets/3615d832-1e1a-4c57-9b3a-0c780936c6c6") | ![Onboarding]("https://github.com/user-attachments/assets/b3ce360e-76ec-4302-9e37-be20aebca997") | ![Dashboard]("https://github.com/user-attachments/assets/52387831-131e-4251-85a6-31d0d5fafc49") |
 
 ## 📄 License
 
