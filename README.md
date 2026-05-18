@@ -64,7 +64,7 @@ com.example.raithabharosahub/
 <img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/a78bed74-3e31-4005-b77a-c373e4d148d6" />
 <img width="150" height="300" alt="image" src="https://github.com/user-attachments/assets/2dc2a1be-2efe-4a1b-9a2a-58b4e083270e" />
 
-         |    Splash Screen    |    Onboarding    |    Dashboard    |
+  |    Splash Screen    |    Onboarding    |    Dashboard    |
 
 
 
